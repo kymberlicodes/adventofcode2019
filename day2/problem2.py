@@ -5,13 +5,10 @@ i = 0
 
 while iterate:
     if input[i] == 1:
-        print("Opcode == 1. Adding.")
-        input[i + 3] = input[input[i + 1]] + input[input[i + 2]]
+        input[input[i + 3]] = input[input[i + 1]] + input[input[i + 2]]
     elif input[i] == 2:
-        print("Opcode == 2. Multiplying.")
-        input[i + 3] = input[input[i + 1]] * input[input[i + 2]]
+        input[input[i + 3]] = input[input[i + 1]] * input[input[i + 2]]
     elif input[i] == 99:
-        print("Opcode == 99. Quitting.")
         iterate = False
         break
     else:
