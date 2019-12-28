@@ -1,28 +1,21 @@
-# Open the file
-file = open("input.txt", "r")
-# Read the file into a list
-intCode = file.read().split(',')
-# Get the length of the list
-lengthOfIntCode = len(intCode)
+input = [1,12,2,3,1,1,2,3,1,3,4,3,1,5,0,3,2,1,6,19,1,9,19,23,1,6,23,27,1,10,27,31,1,5,31,35,2,6,35,39,1,5,39,43,1,5,43,47,2,47,6,51,1,51,5,55,1,13,55,59,2,9,59,63,1,5,63,67,2,67,9,71,1,5,71,75,2,10,75,79,1,6,79,83,1,13,83,87,1,10,87,91,1,91,5,95,2,95,10,99,2,9,99,103,1,103,6,107,1,107,10,111,2,111,10,115,1,115,6,119,2,119,9,123,1,123,6,127,2,127,10,131,1,131,6,135,2,6,135,139,1,139,5,143,1,9,143,147,1,13,147,151,1,2,151,155,1,10,155,0,99,2,14,0,0]
 
-# Loop through the list
-for i in intCode:
-    if int(i) == 1:
-        i = int(i + 1) + int(i + 2)
-        print(intCode)
-    elif int(i) == 2:
-        print("done")
-    elif int(i) == 99:
-        print("done")
+iterate = True
+i = 0
+
+while iterate:
+    if input[i] == 1:
+        print("Opcode == 1. Adding.")
+        input[i + 3] = input[input[i + 1]] + input[input[i + 2]]
+    elif input[i] == 2:
+        print("Opcode == 2. Multiplying.")
+        input[i + 3] = input[input[i + 1]] * input[input[i + 2]]
+    elif input[i] == 99:
+        print("Opcode == 99. Quitting.")
+        iterate = False
+        break
     else:
-        print("done")
+        print("Invalid Opcode")
+    i += 4
 
-# If the first entry (opcode) is a 99, halt the code
-# If you encounter an unkown opcode, it means something went wrong
-# If the opcode is 1, it adds together numbers read from two positiions and stores the result in the third position
-# The three integers following the opcode are the locations
-
-# print(lengthOfIntCode)
-
-# Close file
-file.close()
+print(input[0])
